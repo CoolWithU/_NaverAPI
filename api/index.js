@@ -1,13 +1,13 @@
 const app = require('express')();
-const cors = require('cors')();
-
-app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('https://github.com/NewJean-s/NaverAPI');
 });
 
 app.get('/shorten', (req, res) => {
+  res.setHeader('Access-Control-Allow-origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+
   var url = req.query.url;
   
   async function generate(link) {
